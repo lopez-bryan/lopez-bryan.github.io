@@ -21,6 +21,14 @@
 			position: relative;
 			top: 40px;
 		}
+		#linkButton {
+			position: relative;
+			top: 100px;
+		}
+		#pageLinks {
+  			position: relative;
+			top: 120px;
+		}
 	</style>
 </head>
 <body>
@@ -53,6 +61,26 @@
 	</section>
 	<!-- <section id="selectAssociate"></section> -->
 	<section id="showOption"></section>
+
+
+	<button id="linkButton" onclick="myFunction(this)">Links to Fluency</button>
+
+	<div id="pageLinks" style="display: none;">
+		<div id="homeLink">JavaScript</div>
+		<a href="pages/javascriptObjects.html">JavaScript Objects</a><br>
+		<a href="pages/json.html">JSON</a><br>
+		<a href="pages/ajax.html">Ajax</a><br>
+		<a href="pages/localStorage.html">Local Storage</a><br>
+		<a href="pages/dom.html">DOM</a><br>
+		<a href="pages/css3javascript.html">CSS3 JavaScript</a><br>
+		<a href="pages/transitions.html">Transitions, Animations, Transformations</a><br>
+		<a href="pages/javascriptEvents.html">JavaScript Events</a><br>
+		<a href="pages/mediaTags.html">HTML5 Media Tags</a><br>
+		<a href="pages/css3Transitions.html">CSS3 Transitions</a><br>
+		<a href="pages/css3Transforms.html">CSS3 Transforms</a><br>
+		<a href="pages/css3Animations.html">CSS3 Animations</a><br>
+	</div>
+
 
 
 
@@ -106,6 +134,27 @@
 			}
 		}
 
+	}
+
+	function myFunction(pageButton) {
+  		var x = document.getElementById("pageLinks");
+
+  		if (x.style.display === "none") {
+   		 	x.style.display = "block";
+  		} else {
+    		x.style.display = "none";
+ 		 }
+	}
+
+	document.getElementById("homeLink").onmouseover = function() {mouseOver()};
+	document.getElementById("homeLink").onmouseout = function() {mouseOut()};
+
+	function mouseOver() {
+  	document.getElementById("homeLink").innerHTML = "Wait! That's what this whole page is about.";
+	}
+
+	function mouseOut() {
+	  document.getElementById("homeLink").innerHTML = "JavaScript";
 	}
 
 
