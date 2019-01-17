@@ -2,9 +2,112 @@
 <html>
 <head>
 	<title>JavaScript Objects</title>
+	<style>
+		.title {
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
-	<p>Goes here</p>
+	<h1 class="title">JavaScript Objects</h1>
+
+	<!-- I've made a simple input labels for gathering data.-->
+
+	<label for="firstName">First Name:</label>
+	<input type="text" name="firstName" id="firstName" placeholder="First Name" value=""><br>
+	<label for="lastName">Last Name</label>
+	<input type="text" name="lastName" id="lastName" placeholder="Last Name" value=""><br>
+	<label for="city">City</label>
+	<input type="text" name="city" id="city" value="" placeholder="City"><br>
+	<label for="state">State</label>
+	<input type="text" name="state" id="state" placeholder="State" value=""><br>
+	<!-- The button below is used to send the user input to the createUser() function to create an object. -->
+	<input type="button" name="submit" value="Create User" onclick="createUser()">
+
+
+	<div id="user"></div>
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<!-- <div>
+		<label for="favAnimal">Favorite Animal</label>
+		<input type="text" name="favAnimal" id="favAnimal" value=""><br>
+		<label for="soundOfAnimal">Sound Animal Makes</label>
+		<input type="text" name="soundOfAnimal" id="soundOfAnimal" value=""><br>
+		<input type="button" name="submit" value="submit" onclick="getAnimal()">
+	</div>
+
+	<p id="myAnimal"></p> -->
+
+	<script>
+		// This is a user object. It is the default constructor.
+		let User = function(firstName, lastName, city, state) {
+			this.firstName = firstName;
+			this.lastName = lastName;
+			this.city = city;
+			this.state = state;
+		}
+
+
+		// This function creates a new user by grabbing the user input and running it through the constructor. It is then displayed on the webpage.
+		function createUser() {
+
+			let firstName = document.getElementById("firstName").value;
+			let lastName = document.getElementById("lastName").value;
+			let city = document.getElementById("city").value;
+			let state = document.getElementById("state").value;
+
+			var signedUpUser = new User(firstName, lastName, city, state);
+
+		    document.getElementById("user").innerHTML = "Welcome " + signedUpUser.firstName + " " + signedUpUser.lastName + " from " + signedUpUser.city + ", " + state;
+	};
+
+	// Animals the user likes.
+	var Animal = function(name) {
+  	var obj = {};
+
+  	obj.name = name;
+
+  	obj.makeSound = function() {
+    	document.getElementById("soundOfAnimal").value;
+  	}
+
+  	obj.eat = function() {
+     	 // code goes here
+  	}
+
+  
+  	return obj;
+	}
+
+	// implementation of functional instantiation
+	function getAnimal() {
+	var tiger = Animal('tiger');
+	// tiger.makeSound();
+	document.getElementById("myAnimal").innerHTML = "I like the animal " + tiger + " and it makes the sound " + tiger.makeSound();
+	}
+
+
+	// 	User.prototype.getName = function() {
+	// 		return this.name;
+	// 	};
+
+
+
+	// var PermanentUser = function = function(annualSalary) {
+	// 	this.annualSalary = annualSalary;
+	// }
+
+	// var user = new User("Bryan");
+
+	// PermanentUser.prototype = user;
+
+	// var pe = new PermanentUser(50000);
+	// document.getElementById("user").innerHTML = pe.getName();
+	</script>
 
 </body>
 </html>

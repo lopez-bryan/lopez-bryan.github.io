@@ -4,7 +4,40 @@
 	<title>AJAX</title>
 </head>
 <body>
-	<p>Ajax</p>
+	<h1>Using AJAX</h1>
+
+	<div id="getAjax">
+		<h4>Using Ajax to retrieve data</h4>
+		<button type="button" onclick="getData()">Get Content</button>
+		
+	</div>
+
+	<script>
+		// This function will retrieve the data from another website.
+		function getData() {
+			// creating a new request object with the shttp variable
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("GET", 'https://ghibliapi.herokuapp.com/films', true);
+
+			xhttp.onreadystatechange = function() {
+				var data = JSON.parse(this.response);
+				// Lets check and make sure everything is okay.
+				if (request.status >= 200 && request.status < 400) {
+					data.forEach(movie => {
+						console.log(movie.title);
+					});
+				} else {
+					console.log('error');
+				}
+				// if (this.readyState == 4 && this.status == 200) {
+				// 	document.getElementById("getAjax").innerHTML = this.responseText;
+				// }
+			};
+			xhttp.send();
+		}
+	</script>
 
 </body>
 </html>
+
+
