@@ -2,42 +2,74 @@
 <html>
 <head>
 	<title>AJAX</title>
+	<style type="text/css">
+		body {
+			background-color: #E0E0E0;
+		}
+		h1 {
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
 	<h1>Using AJAX</h1>
 
 	<div id="getAjax">
-		<h4>Using Ajax to retrieve data</h4>
+		<h4>Using Ajax to retrieve data</h4><br>
+
+		<p>Click the button to retrieve from NASA's external API using AJAX.</p>
 		<button type="button" onclick="getData()">Get Content</button>
 		
 	</div>
 
-	<script>
-		// This function will retrieve the data from another website.
-		function getData() {
-			// creating a new request object with the shttp variable
-			var xhttp = new XMLHttpRequest();
-			xhttp.open("GET", 'https://ghibliapi.herokuapp.com/films', true);
 
-			xhttp.onreadystatechange = function() {
-				var data = JSON.parse(this.response);
-				// Lets check and make sure everything is okay.
-				if (request.status >= 200 && request.status < 400) {
-					data.forEach(movie => {
-						console.log(movie.title);
-					});
-				} else {
-					console.log('error');
-				}
-				// if (this.readyState == 4 && this.status == 200) {
-				// 	document.getElementById("getAjax").innerHTML = this.responseText;
-				// }
-			};
-			xhttp.send();
-		}
+
+
+	<script>
+		function getData() {
+			// We use Ajax to communicate with the web server via an XMLHttpRequest(); The XMLHttpRequest object can be used to exchange data with a server behind the scenes
+		request = new XMLHttpRequest();
+
+		// open(method, url, async)
+		request.open('GET', "https://api.nasa.gov/planetary/apod?api_key=cjBTxLNw84nYoK0xG2rfwFSjwjPZEUFBdPdKeHQp", true);
+
+		// I will put the data in the id labeled getAjax
+		const myList = document.getElementById("getAjax");
+
+		// The following function will reveal the data when getData() is called.
+		request.onload = function() {
+			// First we check to make sure everything is okay.
+			if (request.status >= 200 && request.status < 400){
+			// Success! The responseText property returns the server response as a text string. Since it responds as a text string, we need to parse it. Everything that comes from an API is stored in a string.
+			var data = JSON.parse(request.responseText);
+			// Let's loop through each item in the data.
+			for (var item in data) {
+				// While looping through each item, we want to create a div element to put it into.
+				var divElement = document.createElement('div');
+				// textContent is used to store data in an element. In our case, we are putting the next item in the loop.
+				divElement.textContent = data[item];
+				// If you remember, the myList is getting the div id getAjax from the html document. So now we want to append a child element to the div element while looping to make sure each item of data has its own element.
+				myList.appendChild(divElement);
+			}
+			// I just wanted to show all the data that was pulled in the console. It's also a way for me to see the key/values. 
+			console.log(data);
+			// The code below is an example of retrieving specific data using the key/value.
+			// document.getElementById("getAjax").innerHTML = data.copyright;
+  } else {
+    // We reached our target server, but it returned an error
+    console.log("There was an error");
+
+  }
+};
+
+request.onerror = function() {
+  console.log("connection error")
+};
+
+request.send();
+}
 	</script>
 
 </body>
 </html>
-
 
