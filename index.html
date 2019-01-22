@@ -33,19 +33,40 @@
 			position: relative;
 			top: 120px;
 		}
+		#explainShowFluency {
+			position: absolute;
+			top: 80px;
+			right: 100px;
+			left: 800px;
+		}
+		#explainSelectTopics {
+			position: relative;
+			top: 40px;
+			right: 100px;
+			left: 800px;
+		}
+		#explainLinks {
+			position: relative;
+			top: 120px;
+			left: 800px;
+		}
 
 	</style>
 </head>
 <body>
-	<h1>Fluency</h1>
+	<h1>CIT 261 Fluency</h1>
 
-	<h4>Click to Show Fluency</h4>
+	<h4>Click to Show all Fluencies</h4>
 	<section id="loops"></section>
 	<!-- There is a button here to call the showFluency(this) function. The fluency values are stored in an array -->
 	<button onclick="showFluency(this)">Show Fluency</button>
 
+	<div id="explainShowFluency">When the <b>Show Fluency</b> button is clicked, a function is called.
+		The function loops through an array called fluency one by one and are displayed when the button is clicked.
+	 </div>
+
 	<!-- I've used a select statement to retrieve information reguarding a topic. The topic is sent to the getTopic function and which pulls the key/value pairs from my associate array-->
-	<h4 class="selectValue">Topics to Master</h4>
+	<h4 class="selectValue">Select Topics to Master for Fluency</h4>
 	<section>
 		<select id="topics" onchange="getTopic()">
 			<option value="">Select Fluency Topics</option>
@@ -64,11 +85,14 @@
 			<option value="css3Animations">CSS3 Animations</option>
 		</select>
 	</section>
-	<!-- <section id="selectAssociate"></section> -->
+
+	<div id="explainSelectTopics">The select element holds a value which is also a key for my associative array called topic. <br> When you want to select a fluency to view the topics, an onchange function called getTopic <br> is called. Looping through the associative array and using a conditional statement, the<br> function finds which selected value matches the key. Then I displayed the value of the key.</div>
+	
 	<section id="showOption"></section>
 
+	<button id="linkButton" onclick="displayFluencies(this)">Links to Fluency</button>
 
-	<button id="linkButton" onclick="myFunction(this)">Links to Fluency</button>
+	<div id="explainLinks">The display links button stores hidden links. Using style, I keep the div hidden until the<br> function is called. The function changes the style of the div making them show using a<br> conditional statement. Keywords are "none" and "block".</div>
 
 	<div id="pageLinks" style="display: none;">
 		<div id="homeLink">JavaScript</div>
@@ -86,7 +110,7 @@
 		<a href="pages/css3Animations.html">CSS3 Animations</a><br>
 	</div>
 
-	<p id="linkToCode">Here is the link <a href="https://github.com/lopez-bryan/lopez-bryan.github.io/blob/master/index.html">to my code for JavaScript Fluency.</a></p>
+	<p id="linkToCode">Here is the link <a href="https://github.com/lopez-bryan/lopez-bryan.github.io/blob/master/index.html">to my JavaScript Fluency code.</a></p>
 
 
 
@@ -129,12 +153,12 @@
 
 	// This will pull the key from the select statement and show its values from the associative array. This is an associative array with key/value pairs.
 	function getTopic() {
-		// x variable stores the value of topic. In this case, the value is the key.
-		var x = document.getElementById("topics").value;
+		// selected variable stores the value of topic. In this case, the value is the key.
+		var selected = document.getElementById("topics").value;
 		// loop through the keys in the topic associative array
 		for (var key in topic) {
 			// Conditional statement to figure out which key the user wants to see the topics for. The topics are the values stored in with that key
-			if (key === x) {
+			if (key === selected) {
 				// Now it's time to display the values of the key the user selected on the screen inside the "showOption" id from the 
 				// <section> tag.
 				document.getElementById("showOption").innerHTML = topic[key];
@@ -143,13 +167,13 @@
 
 	}
 
-	function myFunction(pageButton) {
-  		var x = document.getElementById("pageLinks");
+	function displayFluencies(pageButton) {
+  		var page = document.getElementById("pageLinks");
 
-  		if (x.style.display === "none") {
-   		 	x.style.display = "block";
+  		if (page.style.display === "none") {
+   		 	page.style.display = "block";
   		} else {
-    		x.style.display = "none";
+    		page.style.display = "none";
  		 }
 	}
 
