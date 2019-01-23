@@ -6,6 +6,9 @@
 		.title {
 			text-align: center;
 		}
+		body {
+			background-color: #E0E0E0;
+		}
 	</style>
 </head>
 <body>
@@ -51,7 +54,9 @@
 	<p id="employment"></p>
 	<p id="income"></p>
 	<p>Is job the prototype of tommy? Let's use the isPrototypeOf method below.</p>
-	<p id="isJobPrototype"></p>
+	<p id="isJobPrototype"></p><br>
+
+	<p>Thank you for viewing my page about JavaScript Objects. Feel free to check out my <a href="https://github.com/lopez-bryan/lopez-bryan.github.io/blob/master/pages/javascriptObjects.html">code on my github.</a></p>
 
 	<script>
 		// This is a user object. It is the default constructor.
@@ -96,7 +101,7 @@
 	tommy.employment();  					// Outputs Amazon to console
 	tommy.income();      					// Outputs $80,000 to console
 	console.log("Tommy is a prototype of: " + job.isPrototypeOf(tommy));  // True
-	document.getElementById("isJobPrototype").innerHTML = job.isPrototypeOf(tommy);
+	document.getElementById("isJobPrototype").innerHTML = job.isPrototypeOf(tommy);  // Lets put it out on the webpage
 
 
 
