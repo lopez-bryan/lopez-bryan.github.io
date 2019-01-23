@@ -9,6 +9,16 @@
 		h1 {
 			text-align: center;
 		}
+		header {
+			background-size: auto;
+			background-color: #230B08;
+			color: white;
+		}
+		footer {
+			background-size: auto;
+			background-color: #230B08;
+			color: white;
+		}
 		#showOption {
 			position: relative;
 			top: 70px;
@@ -35,7 +45,7 @@
 		}
 		#explainShowFluency {
 			position: absolute;
-			top: 80px;
+			top: 150px;
 			right: 100px;
 			left: 800px;
 		}
@@ -54,16 +64,20 @@
 	</style>
 </head>
 <body>
+	<header>
+		<p>Bryan Lopez</p>
+		<p>CIT261 Section 3</p>
+	</header>
 	<h1>CIT 261 Fluency</h1>
+
+	<div id="explainShowFluency">When the <b>Show Fluency</b> button is clicked, a function is called.
+		The function loops through an array called fluency one by one and are displayed when the button is clicked.
+	 </div>
 
 	<h4>Click to Show all Fluencies</h4>
 	<section id="loops"></section>
 	<!-- There is a button here to call the showFluency(this) function. The fluency values are stored in an array -->
 	<button onclick="showFluency(this)">Show Fluency</button>
-
-	<div id="explainShowFluency">When the <b>Show Fluency</b> button is clicked, a function is called.
-		The function loops through an array called fluency one by one and are displayed when the button is clicked.
-	 </div>
 
 	<!-- I've used a select statement to retrieve information reguarding a topic. The topic is sent to the getTopic function and which pulls the key/value pairs from my associate array-->
 	<h4 class="selectValue">Select Topics to Master for Fluency</h4>

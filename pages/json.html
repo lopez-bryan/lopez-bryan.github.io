@@ -20,13 +20,17 @@
 
 	<h4>We send data to and from a web server using JSON.</h4><br>
 
-	<p>Below is an object that was converted to a string using JSON.stringify. All data sent to a web server need to be in a string. </p>
+	<p>Below is an object that was converted to a string using JSON.stringify. All data sent to a web server needs to be in a string. </p>
 	<div id="toString"></div><br><br>
 
+	<p>Here I just wanted to grab one property from our data.</p>
 	<div id="oneProperty"></div><br><br>
 
-	<p>Here the string object is from the server and parsed making the format more user readable.</p>
-	<div id="parse"></div>
+	<p>The JSON is parsed from a string. I accessed individual values.</p>
+	<div id="parse"></div><br><br>
+
+	<p>Below I parsed the whole string object.</p>
+	<div id="parseAll"></div><br><br>
 
 	<p>Please see my code for <a href="https://github.com/lopez-bryan/lopez-bryan.github.io/blob/master/pages/json.html">JSON at my GitHub.</a></p>
 
@@ -46,8 +50,8 @@ const student = {
 const studentObjToString = JSON.stringify(student);
 
 // testing to see if expected output shows up in console
-console.log(typeof studentObjToString);
-console.log(studentObjToString);
+console.log("type of is " + typeof studentObjToString);
+console.log("String version is " + studentObjToString);
 
 //Outputing object string to page
 document.getElementById("toString").innerHTML = studentObjToString;
@@ -63,11 +67,23 @@ document.getElementById("oneProperty").innerHTML = student.name;
 // Converts string to object. 
 const toJSONStudent = JSON.parse(studentObjToString);
 
-console.log(typeof toJSONStudent);
+console.log("parsed version of " + typeof toJSONStudent);
 console.log(toJSONStudent.age);
 
-// Here below we show the properties being pulled out with the object.
+// Here below we show the properties being pulled out with the object. The period gives us access to the Key's value.
 document.getElementById("parse").innerHTML = toJSONStudent.name + " " + toJSONStudent.age;
+
+// If we want to grab all the key/values, we need to loop through them one by one.
+
+// Empty variable to collect each loop.
+var data = "";
+// For loop to go through each piece of data.
+for(var singleData in toJSONStudent) {
+	// store each key's value in data along with a space between each piece. 
+	data += toJSONStudent[singleData] + " ";
+}
+// Grab the id and send all the data back to the html element.
+document.getElementById("parseAll").innerHTML = data;
 
 
 
