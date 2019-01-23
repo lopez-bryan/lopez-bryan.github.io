@@ -11,6 +11,8 @@
 <body>
 	<h1 class="title">JavaScript Objects</h1>
 
+	<p>First, the values below will go into a constructor.</p>
+
 	<!-- I've made a simple input labels for gathering data.-->
 
 	<label for="firstName">First Name:</label>
@@ -22,25 +24,34 @@
 	<label for="state">State</label>
 	<input type="text" name="state" id="state" placeholder="State" value=""><br>
 	<!-- The button below is used to send the user input to the createUser() function to create an object. -->
-	<input type="button" name="submit" value="Create User" onclick="createUser()">
-
+	<input type="button" name="submit" value="Create User" onclick="createUser()"><br>
 
 	<div id="user"></div>
 
+	<p>Click below to show functional instantiation.</p>
+
+	<!-- <label for="make">Make</label>
+	<input type="text" name="make" id="make" placeholder="Make">
+	<label for="model">Model</label>
+	<input type="text" name="model" id="model" placeholder="Model"><br> -->
+	<input type="button" name="submit" value="Submit Model" onclick="getVehicle()">
+	<p id="yourCar"></p>
+	<div id="howNice"></div>
+
+
+
 	<br>
 	<br>
 	<br>
 	<br>
 
-	<!-- <div>
-		<label for="favAnimal">Favorite Animal</label>
-		<input type="text" name="favAnimal" id="favAnimal" value=""><br>
-		<label for="soundOfAnimal">Sound Animal Makes</label>
-		<input type="text" name="soundOfAnimal" id="soundOfAnimal" value=""><br>
-		<input type="button" name="submit" value="submit" onclick="getAnimal()">
-	</div>
+	<p>Now I will start with a prototype for job which contains employement and income functions along with company and potentialIncome properties. Please also check the console as I have put the numbers there as well.</p>
 
-	<p id="myAnimal"></p> -->
+	
+	<p id="employment"></p>
+	<p id="income"></p>
+	<p>Is job the prototype of tommy? Let's use the isPrototypeOf method below.</p>
+	<p id="isJobPrototype"></p>
 
 	<script>
 		// This is a user object. It is the default constructor.
@@ -65,48 +76,55 @@
 		    document.getElementById("user").innerHTML = "Welcome " + signedUpUser.firstName + " " + signedUpUser.lastName + " from " + signedUpUser.city + ", " + state;
 	};
 
-	// Animals the user likes.
-	var Animal = function(name) {
-  	var obj = {};
+	// Prototype for jobs and income. We leave our prototype empty
+	const job = {
+		employment: function() {        	 	// Employement is a method of the job object
+			console.log(this.company);	 		// Company is the property of the job object
+			document.getElementById("employment").innerHTML = this.company;
+		},
+		income: function() {					// Income is a method of the job object
+			console.log(this.potentialIncome)   // PotentialIncome is the property of the job object
+			document.getElementById("income").innerHTML = this.potentialIncome;
+		}
+	}
 
-  	obj.name = name;
+	// Here I have used the object create method. It creates an object from the prototype. We have an empty prototype which helps JavaScript run faster. 
+	const tommy = Object.create(job);  
+	// My new object tommy will first check itself for the property company or the method employment. If it doesn't find it, it will inherit either one or both from the prototype.
+	tommy.company = "Amazon";           	// This is instantiation of a property company
+	tommy.potentialIncome = "$80,000";   	// Instantiation of property potentialIncome
+	tommy.employment();  					// Outputs Amazon to console
+	tommy.income();      					// Outputs $80,000 to console
+	console.log("Tommy is a prototype of: " + job.isPrototypeOf(tommy));  // True
+	document.getElementById("isJobPrototype").innerHTML = job.isPrototypeOf(tommy);
 
-  	obj.makeSound = function() {
-    	document.getElementById("soundOfAnimal").value;
-  	}
 
-  	obj.eat = function() {
-     	 // code goes here
-  	}
 
-  
-  	return obj;
+	
+
+	// The make and model the user likes. For functional instantiation, we create an empty object inside our function
+	const vehicle = function(make, model) {
+
+		// Create an empty object
+		var obj = {};
+
+		obj.make = make;
+		obj.model = model;
+
+		obj.isNice = function() {
+			console.log("It is a nice car");
+			document.getElementById("howNice").innerHTML = "It is a nice car!";
+		}
+		return obj;
 	}
 
 	// implementation of functional instantiation
-	function getAnimal() {
-	var tiger = Animal('tiger');
-	// tiger.makeSound();
-	document.getElementById("myAnimal").innerHTML = "I like the animal " + tiger + " and it makes the sound " + tiger.makeSound();
+	function getVehicle() {
+		var bryan = vehicle("Toyota", "Supra");
+		document.getElementById("yourCar").innerHTML = bryan.make + " " + bryan.model;
+		bryan.isNice();
 	}
 
-
-	// 	User.prototype.getName = function() {
-	// 		return this.name;
-	// 	};
-
-
-
-	// var PermanentUser = function = function(annualSalary) {
-	// 	this.annualSalary = annualSalary;
-	// }
-
-	// var user = new User("Bryan");
-
-	// PermanentUser.prototype = user;
-
-	// var pe = new PermanentUser(50000);
-	// document.getElementById("user").innerHTML = pe.getName();
 	</script>
 
 </body>
