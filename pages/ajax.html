@@ -30,7 +30,7 @@
 	<script>
 		function getData() {
 			// We use Ajax to communicate with the web server via an XMLHttpRequest(); The XMLHttpRequest object can be used to exchange data with a server behind the scenes
-		request = new XMLHttpRequest();
+		var request = new XMLHttpRequest();
 
 		// open(method, url, async)
 		request.open('GET', "https://api.nasa.gov/planetary/apod?api_key=cjBTxLNw84nYoK0xG2rfwFSjwjPZEUFBdPdKeHQp", true);
@@ -42,7 +42,7 @@
 		request.onload = function() {
 			// First we check to make sure everything is okay.
 			if (request.status >= 200 && request.status < 400){
-			// Success! The responseText property returns the server response as a text string. Since it responds as a text string, we need to parse it. Everything that comes from an API is stored in a string.
+			// Success! The responseText method returns the server response as a text string. Since it responds as a text string, we need to parse it. Everything that comes from an API is stored in a string.
 			var data = JSON.parse(request.responseText);
 			// Let's loop through each item in the data.
 			for (var item in data) {
