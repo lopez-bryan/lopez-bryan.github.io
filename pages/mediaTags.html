@@ -28,7 +28,7 @@
 	<!-- I needed to make div to center the elements like video and audio -->
 	<div class="center">
 		<!-- Video is given height, width and controls. I could also make a function here attached to buttons if I wanted to do the controls that way. The source element allows the browser to look for multiple sources just in case the web browser doesn't support the top source element's format. It will move to the second source element and so on. The <p> element inside the video element will only show if the browser doesn't support the video. -->
-		<video width=500 height="400" preload="auto" controls>
+		<video width=500 height="400" preload="auto" controls="true">
   			<source src="../media/GOPRO080.mp4" type="video/mp4">
   			<p>This browser does not support the video tag.</p>
 		</video>
