@@ -2,9 +2,109 @@
 <html>
 <head>
 	<title>DOM</title>
+	<style type="text/css">
+		body {
+			background-color: #E0E0E0;
+		}
+		h1 {
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
-	<p>dom</p>
+	<h1>DOM or Document Object Model</h1>
+
+	<p>First let's grab some user input.</p>
+
+	<label for="lastName">First Name</label>
+	<input type="text" name="firstName" id="firstName" placeholder="First Name">
+	<label for="lastName">Last Name</label>
+	<input type="text" name="lastName" id="lastName" placeholder="Last Name">
+	<input type="button" name="addToList" onclick="addToList()" value="Add To List"><br><br><br>
+
+	<p>Below is the user list I previously created.</p>
+	<p id="userList"></p><br><br><br>
+
+	<p id="addedToList">My new array here.</p>
+
+	<P>Lets create an element and append a child to it.</P>
+	<input type="button" name="addElement" onclick="addElement()" value="Add Element">
+
+	<div id="addingElement"></div>
+
+	<!-- <div>Using this as parent element</div>
+	<div>Using this as the child element</div> -->
+
+	<button type="button" onclick="removeFirst()" value="Remove First Child">Remove First Child</button>
+	<button type="button" onclick="removeLast()" value="Remove Last Child">Remove Last Child</button><br><br><br>
+
+	<span id="thisNode">I want to insert something above this</span><br>
+	<button type="button" onclick="insertElementBefore()" value="Insert Before">Insert Before</button>
+
+	<br>
+	<p>Here is the link <a href="https://github.com/lopez-bryan/lopez-bryan.github.io/blob/master/pages/dom.html">to my code!</a></p>
+
+
+	<script type="text/javascript">
+		// I have started an array here.
+		var myList = ["Bryan Lopez", "John Rambo"];
+		document.getElementById("userList").innerHTML = myList;
+
+		// This function will pass in the user input and grab its value. Then I push it into the array I have started oup above with two values. Just to show it works, I push the new array to its element.
+
+		function addToList(firstName, lastName) {
+		// document.getElementById("userList").innerHTML = myList;
+		firstName = document.getElementById("firstName").value;
+		lastName = document.getElementById("lastName").value;
+		// I'm pushing the user input into the array in one place
+		myList.push(firstName + " " + lastName);
+		// Just logging it to make sure it works.
+		console.log(myList);
+		// Now I want to show my newly created array
+		document.getElementById("addedToList").innerHTML = myList;
+	}
+
+	function addElement() {
+		// Fist I want to grab the id to show this on the screen
+		addAnElem = document.getElementById("addingElement");
+		// Next I want to loop through myList. Actually it's my array and it only holds Bryan Lopez at the moment.
+		for (var item in myList) {
+			// With each loop iteration, I want to create a div element.
+			var divElement = document.createElement("div");
+			// Also in each iteration, I want to store each item in the list inside text element. The reason I attach it to divElement is because textContent is a method that stores data in an element. This way I'm storing data in my newly created div element. 
+			divElement.textContent = myList[item];
+			// Now I just append my newly created div with its textContent data to its parent div. I attached it to addAnElem which just grabs the document by its id.
+			addAnElem.appendChild(divElement);
+
+		}
+	}
+	// This function will remove a child element
+	function removeFirst() {
+		// The first thing I did was grab the parent id 
+		var remove = document.getElementById("addingElement");
+		// From the parent id, I use the removeChild method and inside the parameters I remove the firstChild
+		remove.removeChild(remove.firstChild);
+	}
+
+	function removeLast() {
+		// The first thing I did was grab the parent id 
+		var remove = document.getElementById("addingElement");
+		// Asme as above, just removing the lastChild
+		remove.removeChild(remove.lastChild);
+
+	}
+
+	function insertElementBefore() {
+		var newParagraph = document.createElement("p");
+		var textnode = document.createTextNode("Inserting this node before.");
+		newParagraph.appendChild(textnode);
+		var addedNode = document.getElementById("thisNode");
+		// Where are we inserting this (What element and text are we inserting, where are we inserting it)
+		addedNode.insertBefore(newParagraph, addedNode.childNodes[0]);
+	}
+
+	
+	</script>
 
 </body>
 </html>
