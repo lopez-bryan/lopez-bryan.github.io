@@ -2,11 +2,68 @@
 <html>
 <head>
 	<title>Media Tags</title>
+	<style type="text/css">
+		canvas {
+			border: 1px;
+			border-style: double;
+			border-color: red;
+			border-width: 3px;
+		}
+		h1 {
+			text-align: center;
+		}
+		.center {
+			text-align: center;
+		}
+		body {
+			background-color: #E0E0E0;
+		}
+	</style>
 </head>
 <body>
-	<p>Coming Soon</p>
+	<h1>Media Tags - Audio, Video, Canvas</h1>
 
-	<p>Here is a <a href="">Link to my Code.</a></p>
+	<!-- The controls attribute adds video controls like play and stop  -->
+	<h4 class="center">Below is a video of my daughter and I snow tubing last year.</h4>
+	<!-- I needed to make div to center the elements like video and audio -->
+	<div class="center">
+		<!-- Video is given height, width and controls. I could also make a function here attached to buttons if I wanted to do the controls that way. The source element allows the browser to look for multiple sources just in case the web browser doesn't support the top source element's format. It will move to the second source element and so on. The <p> element inside the video element will only show if the browser doesn't support the video. -->
+		<video width=500 height="400" controls>
+  			<source src="../media/GOPRO080.mp4" type="video/mp4">
+  			<p>This browser does not support the video tag.</p>
+		</video>
+	</div><br><br>
+
+	<h4 class="center">Below is the audio for Moroni chapter 10.</h4>
+
+	<div class="center">
+		<!-- The audio works just like the video element -->
+		<audio controls>
+			<source src="../media/moroni_ch10.mp3" type="audio/mpeg">
+		</audio>
+	</div><br><br>
+
+	<h4 class="center">Below is my canvas</h4>
+	<!-- The canvas itself does nothing except giving the element an id and size of the canvas. Everything else is accomplished using JavaScript. -->
+	<div class="center">
+		<canvas id="helloWorld" width="300" height="200"></canvas>
+	</div>
+
+
+	<p>Here is a <a href="https://github.com/lopez-bryan/lopez-bryan.github.io/blob/master/pages/dom.html">Link to my Code.</a></p>
+
+	<script>
+		var c = document.getElementById("helloWorld");   // Grab the id of the elment you want to use
+		var ctx = c.getContext("2d");					 // getcontext() object comes with methods and properties for drawing
+		ctx.font = "30px Bold Fraktur";						 // What font do you want to make the text
+		ctx.strokeText("Hello World",60,50);			 // draws text on the page - strokeText(text, x, y)
+		ctx.fillStyle = "#00bfff";						 // Set the fill style to a color. It can also be a gradient or a pattern
+		ctx.fillRect(60,70,150,60);						 // Fill the rectangle with fillRect(Xpx, Ypx, width, height) you want to fill
+		// Drawing a line requires 3 functions
+		ctx.moveTo(0, 100);								 // Drawing a line. moveTo(x,y) is the starting point. Remember, x is from the 														left, Y is from the top
+		ctx.lineTo(300, 100);							 // lineTo is the ending point of the line. Same as above lineTo(x,y)
+		ctx.stroke();									 // stroke() draws the line
+	</script>
 
 </body>
 </html>
