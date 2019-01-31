@@ -12,9 +12,9 @@
 	</style>
 </head>
 <body>
-	<h1>DOM or Document Object Model</h1>
+	<h1 id="header">DOM or Document Object Model</h1>
 
-	<p>First let's grab some user input.</p>
+	<p>First let's grab some user input so we can add it to my previously created array.</p>
 
 	<label for="lastName">First Name</label>
 	<input type="text" name="firstName" id="firstName" placeholder="First Name">
@@ -25,18 +25,20 @@
 	<p>Below is the user list I previously created.</p>
 	<p id="userList"></p><br><br><br>
 
-	<p id="addedToList">My new array here.</p>
+	<p id="addedToList">My new array will replace this text when input is added.</p>
 
 	<P>Lets create an element and append a child to it.</P>
-	<input type="button" name="addElement" onclick="addElement()" value="Add Element">
+	<input type="button" name="addElement" onclick="addElement()" value="Show Whole List">
 
+	<!-- This id addingElement will be used to add to an array, remove the first element and remove the last element. -->
 	<div id="addingElement"></div>
 
-	<!-- <div>Using this as parent element</div>
-	<div>Using this as the child element</div> -->
-
+	
+	<!-- The first button below will call the functions that remove the top element.  -->
 	<button type="button" onclick="removeFirst()" value="Remove First Child">Remove First Child</button>
+	<!-- This second button will remove the last element in my list. -->
 	<button type="button" onclick="removeLast()" value="Remove Last Child">Remove Last Child</button><br><br><br>
+
 
 	<span id="thisNode">I want to insert something above this</span><br>
 	<button type="button" onclick="insertElementBefore()" value="Insert Before">Insert Before</button>
@@ -93,13 +95,17 @@
 		remove.removeChild(remove.lastChild);
 
 	}
-
+	// This function  will insert a node before the current node it is on. That means before the current id it is getting the document for.
 	function insertElementBefore() {
+		// First thing to do is create a new element
 		var newParagraph = document.createElement("p");
-		var textnode = document.createTextNode("Inserting this node before.");
+		// Next we create text and put it inside the textnode.
+		var textnode = document.createTextNode("Inserting this text before my current one.");
+		// Now we append the text to our new element with the appendChild function
 		newParagraph.appendChild(textnode);
+		// Now we can grab the id where we want to put the node
 		var addedNode = document.getElementById("thisNode");
-		// Where are we inserting this (What element and text are we inserting, where are we inserting it)
+		// Where are we inserting this (addNode id) (What element and text are we inserting, where are we inserting the childNodes like an array. )
 		addedNode.insertBefore(newParagraph, addedNode.childNodes[0]);
 	}
 
