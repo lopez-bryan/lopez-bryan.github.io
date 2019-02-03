@@ -2,9 +2,200 @@
 <html>
 <head>
 	<title>CSS3JavaScript</title>
-</head>
-<body>
-	<p>css3javascript</p>
+	<style type="text/css">
+		.make-blue {
+  			background-color: blue;
+  			text-align: center;
+  			color: white;
+		}
+		.make-red {
+  			background-color: red;
+  			text-align: center;
+  			color: white;
+		}
+		.make-orange {
+			background-color: orange;
+  			text-align: center;
+  			color: white;
+		}
+		.make-pink {
+			background-color: pink;
+  			text-align: center;
+  			color: white;
+		}
+		
+		.make-yellow {
+			background-color: yellow;
+  			text-align: center;
+  			color: white;
+		}
+		
+		.make-green {
+			background-color: green;
+  			text-align: center;
+  			color: white;
+		}
+		.make-black {
+			background-color: black;
+  			text-align: center;
+  			color: white;
+		}
+		.make-white {
+			background-color: white;
+  			text-align: center;
+  			color: black;
+		}
 
+		.heading-font {
+  			font-size: 50px;
+
+		}
+		.font-color-red {
+			background-color: blue;
+  			text-align: center;
+  			color: red;
+		}
+		.font-color-blue {
+			color: blue;
+		}
+		.buttons {
+			background-color: gray;
+  			border: none;
+  			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;  
+			border-radius: 12px;
+		}
+		.center {
+			text-align: center;
+		}
+		footer {
+			height: 50px;
+			position: fixed;
+			bottom: 20px;
+			text-align: center;
+			background-color: gray;
+			color: white;
+			width: 100%;
+		}
+	</style>
+</head>
+<body id="change-my-font" class="this-class">
+	<h1 id="heading-color">CSS3 JavaScript</h1>
+	<p class="center">We are able to play with the classes by changing the page for user interaction.</p>
+	<div>Change the font color.
+		<select id="font-color" onchange="fontChange()">
+			<option>select</option>
+			<option value="blue">Blue</option>
+			<option value="red">Red</option>
+			<option value="orange">Orange</option>
+			<option value="pink">Pink</option>
+			<option value="yellow">Yellow</option>
+			<option value="green">Green</option>
+			<option value="black">Black</option>
+			<option value="white">White</option>
+		</select>
+	</div><br>
+
+	<div>change the background
+		<select id="background-color" onchange="changePage()">
+			<option>select</option>
+			<option value="blue">Blue</option>
+			<option value="red">Red</option>
+			<option value="orange">Orange</option>
+			<option value="pink">Pink</option>
+			<option value="yellow">Yellow</option>
+			<option value="green">Green</option>
+			<option value="black">Black</option>
+			<option value="white">White</option>
+		</select>
+	</div><br><br><br>
+
+
+<!-- <button onclick="changeFont()" class="buttons">Make Font Red</button> -->
+
+<button onclick="changeHeading()" class="buttons">Change heading</button>
+
+
+<footer>Check out my code <a href="https://github.com/lopez-bryan/lopez-bryan.github.io/blob/master/pages/css3javascript.html">on github here.</a></footer>
+
+<script type="text/javascript">
+
+	function changePage() {
+		var changeBackground = document.getElementById("background-color").value;
+		switch (changeBackground) {
+			case "blue":
+			document.getElementById("change-my-font").className = "make-blue";
+			break;
+			case "red":
+			document.getElementById("change-my-font").className = "make-red";
+			break;
+			case "orange":
+			document.getElementById("change-my-font").className = "make-orange";
+			break;
+			case "pink":
+			document.getElementById("change-my-font").className = "make-pink";
+			break;
+			case "yellow":
+			document.getElementById("change-my-font").className = "make-yellow";
+			break;
+			case "green":
+			document.getElementById("change-my-font").className = "make-green";
+			break;
+			case "black":
+			document.getElementById("change-my-font").className = "make-black";
+			break;
+			case "white":
+			document.getElementById("change-my-font").className = "make-white";
+			break;
+		}
+	}
+
+	function changeFont() {
+		document.getElementById("change-my-font").className = "font-color-red";
+	}
+
+	
+	function fontChange() {
+		let font = document.getElementById("font-color").value;
+		switch (font) {
+			case "blue":
+			document.getElementById("change-my-font").style.color = "blue";
+			break;
+			case "red":
+			document.getElementById("change-my-font").style.color = "red";
+			break;
+			case "orange":
+			document.getElementById("change-my-font").style.color = "orange";
+			break;
+			case "pink":
+			document.getElementById("change-my-font").style.color = "pink";
+			break;
+			case "yellow":
+			document.getElementById("change-my-font").style.color = "yellow";
+			break;
+			case "green":
+			document.getElementById("change-my-font").style.color = "green";
+			break;
+			case "black":
+			document.getElementById("change-my-font").style.color = "black";
+			break;
+			case "white":
+			document.getElementById("change-my-font").style.color = "white";
+			break;
+		}
+	}
+
+	function changeHeading() {
+  		document.getElementsByTagName("h1")[0].setAttribute("class", "heading-font"); 
+	}
+
+
+</script>
 </body>
 </html>
