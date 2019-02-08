@@ -2,9 +2,185 @@
 <html>
 <head>
 	<title>JavaScript Events</title>
+	<style>
+		#footer {
+			position: fixed;
+			background-color: gray;
+			color: white;
+			right: 10px;
+			bottom: 10px;
+			text-align: center;
+		}
+		.new-header {
+			text-align: center;
+		}
+		.new-fourth-header {
+			text-align: center;
+		}
+		.body {
+			background-color: #ECF0F1;
+		}
+		#droptarget {
+			position: absolute;
+			left: 550px;
+			width: 250px; 
+			height: 25px;
+			margin: 55px auto;
+			padding: 10px;
+			border: 1px solid black;
+		}
+		#touch-paragraph {
+			text-align: center;
+		}
+		#animation-div {
+			text-align: center;
+			margin: 25px auto;
+			width: 250px;
+			height: 100px;
+			background: black;
+			color: white;
+			position: relative;
+			top: 300px;
+			font-size: 18px;
+		}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mymove {
+  from {top: 0px;}
+  to {top: 200px;}
+}
+
+@keyframes mymove {
+  from {top: 0px;}
+  to {top: 200px;}
+}
+	</style>
 </head>
-<body>
-	<p>Coming soon</p>
+<!-- When the page loads, the loadDate() function will be called displaying the current date. -->
+<body onload="loadDate()" id="body">
+	<h1 class="header" id="my-header">Welcome to JavaScript Events</h1>
+	<!-- Event for the date today. -->
+	<h4 class="today-date" id="today-date"></h4>
+
+	<!-- The paragraph I want to drop is here. It allows draggable and is the starting point. -->
+	<p id="fix" ondragstart="dragStart(event)" draggable="true">Please fix this page by clicking below.</p>
+	<button onclick="fixPage()" id="fix-button">Click Here</button>
+
+	<!-- Div to drop a paragraph -->
+	<div id="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+		
+	</div>
+
+	<!-- Something for a touchscreen device. -->
+	<p id="touch-paragraph" ontouchstart="changeTouch()">Touch this paragraph and it will change if you have touch screen.</p>
+
+	<!-- A little built in animation. -->
+	<div id="animation-div" onclick="moveAnimation()">Click to start an addEventListener with animation.</div>
+
+	<!-- My footer has a mouseover and mouseout event that makes it larger and smaller. -->
+	<footer id="footer">Get my source code for <a href="https://github.com/lopez-bryan/lopez-bryan.github.io/blob/master/pages/javascriptEvents.html" onmouseover="largeFont(this)" onmouseout="regularFont(this)">JavaScript Events here.</a></footer>
+
+
+
+
+	<!-- Standard JavaScript Events Including those for Mobile Devices ( Ex. onTouchBegin, onLoad, etc.) and Animation and Transition Events -->
+
+	<script>
+		// I wanted to be able to use the written out month so I put them in an array.
+		var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+		// The load date function will access today's month(my array above), today's date, and today's year.
+		function loadDate() {
+			// Get the id we want to put the date in.
+			let date = document.getElementById("today-date");
+			// Create a date object.
+			var today = new Date()
+			// Put the complete date how I want it displayed on the screen.
+			date.innerHTML = months[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
+			console.log(today);
+		}
+
+		// A function to make the font larger.
+		function largeFont(font) {
+			font.style.fontSize = "x-large";
+		}
+
+		// A function to make the font smaller.
+		function regularFont(font) {
+			font.style.fontSize = "medium";
+		}
+
+		// The function below will manipulates the page how I want it using an event. 
+		function fixPage() {
+			// Let's change the style of the header by manipulating the class to center it.
+			document.getElementById("my-header").className = "new-header";
+			// Manipulate the class for the h4 element.
+			document.getElementById("today-date").className = "new-fourth-header";
+			// I want to change the background color of the page.
+			document.getElementById("body").className = "body";
+			// Just leaving a reminder or an alert for the user to drag and drop a paragraph 
+			alert("Oops, please center that last piece by dragging the stubborn sentence.")
+			// No reason to leave the button. Lets get rid of it after the user presses it.
+			document.getElementById("fix-button").style.visibility = "hidden";
+			// Let user know what to drag by changing the text.
+			document.getElementById("fix").innerHTML = "Drag me over to the square."
+		}
+
+		// I need this to drag and drop the paragraph.
+		function dragStart(event) {
+		  	event.dataTransfer.setData("Text", event.target.id);
+		}
+
+		// This only lets the user drop it in the rectangle.
+		function allowDrop(event) {
+		  	event.preventDefault();
+		  	event.target.style.border = "4px solid black";
+		}
+
+		// Here is the actual drop. Lets leave a little note letting them know it's completed and get rid of the border.
+		function drop(event) {
+			// Make sure it's in the box.
+			event.preventDefault();
+			// Transfer the data.
+			var data = event.dataTransfer.getData("Text");
+			// Append the transfered data to an element.
+			event.target.appendChild(document.getElementById(data));
+			// Let the user know they completed the task
+			document.getElementById(data).innerHTML = "Now this is much better, thank you.";
+			// Hide the border
+			event.target.style.border = "transparent";
+		}
+
+		// A touch screen for mobile devices or touch screen devices.
+		function changeTouch() {
+			document.getElementById("touch-paragraph").innerHTML = "You have touched the screen!";
+		}
+
+		// Animation function that moves a rectangle in the screen
+		var animate = document.getElementById("animation-div");
+		function moveAnimation() {
+			animate.style.WebkitAnimation = "mymove 4s 2"; // Code for Chrome, Safari and Opera
+  			animate.style.animation = "mymove 4s 2";     // Standard syntax
+		}
+
+		// We need an event listener to start the animation and stop it.
+		animate.addEventListener("webkitAnimationStart", myStartFunction);
+		animate.addEventListener("webkitAnimationEnd", myEndFunction);
+
+		// Starting animation text and background color.
+		function myStartFunction() {
+		  this.innerHTML = "starting animation";
+		  this.style.backgroundColor = "black";
+		}
+
+		// Ending animation text and background color
+		function myEndFunction() {
+		  this.innerHTML = "That's all folks";
+		  this.style.backgroundColor = "lightgray";
+		}
+
+	</script>
+
+
 
 </body>
 </html>
