@@ -1,24 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Local Storage</title>
+	<title>local</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		h1 {
+			text-align: center;
+		}
+		#listForm {
+			position: relative;
+			text-align: center;
+			font-family: "Times New Roman";
+			font-size: 25px;
+			font-weight: bold;
+		}
+		#container1 {
+			position: relative;
+			top: 30px;
+			right: 40px;
+			bottom: 30px;
+			left: 40px;
+			margin-left: 20px;
+			margin-right: 20px;
+			background-color: gray;
+		}
+		body {
+			background-color: black;
+		}
+		#clear-button {
+			position: relative;
+		    top: 50%;
+		    left: 48%;
+			background-color: blue;
+			border: none;
+			color: white;
+			padding: 15px 24px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+		 	cursor: pointer;
+		}
+		
+		.myList {
+			/*text-align: center;*/
+			position: relative;
+			left: 48%;
+		}
+
+		footer {
+			position: fixed;
+			text-align: center;
+			margin-left: 20px;
+			margin-right: 20px;
+			bottom: 20px;
+			background-color: gray;
+			width: 90%;
+			height: 40px;
+		}
+	</style>
 </head>
 <body>
-	<h1>Local Storage</h1>
+	<!-- Just using a large container to fit everything inside. I want the background color of the container to be 
+	different from the background color of the page. -->
+	<div id="container1">
+		<h1>Local Storage</h1>
+		<!-- A simple form to grab user information from. -->
+		<form id="listForm">Add to your list
+  			<input id="item" type="text" placeholder="Create" required>
+		</form>
 
-	<div id="result"></div>
+		<h2 class="myList">List</h2>
+		<ul id="myList" class="myList"></ul>
+
+		<input type="button" name="clear" value="Clear All" onclick="clearAll()" id="clear-button">
+
+	</div>
+
+	<footer>Please Check out <a href="https://github.com/lopez-bryan/lopez-bryan.github.io/blob/master/pages/localStorage.html">my code on GitHub!</a></footer>
+
 
 <script>
-// Check browser support
-if (typeof(Storage) !== "undefined") {
-  // Store
-  localStorage.setItem("lastname", "Smith");
-  // Retrieve
-  document.getElementById("result").innerHTML = localStorage.getItem("lastname");
-} else {
-  document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+	// Just a few variables to grab and put the data to and from the user.
+	const form = document.getElementById('listForm');
+	const ul = document.getElementById('myList');
+	const button = document.querySelector('button');
+	const input = document.getElementById('item');
+	// If there already exists data in the local storage, then we will get it, otherwise, lets create an array
+	let yourData = localStorage.getItem('yourItems') ? JSON.parse(localStorage.getItem('yourItems')) : [];
+
+	// We must set the items in the local storage by passing in the key('yourItems') and the data. All items must be 
+	// passed in as a string into the API.
+	localStorage.setItem('yourItems', JSON.stringify(yourData));
+	// In order to get the data from the storage, we must retrieve it with the appropriate method and parse it back into an object.
+	const data = JSON.parse(localStorage.getItem('yourItems'));
+
+
+	// Add the user input by adding it to the list
+	function addToList(text){
+	// Create a list element using DOM manipulation
+	const li = document.createElement('li');
+	// Put the text the user input into the list element.
+	li.textContent = text;
+	// Append the new list element to the page, in this case to the unordered list element.
+	ul.appendChild(li);
+}
+
+	// When the user hits submit, let's add the item to the list and erase their input form the field
+	form.addEventListener('submit', function (e) {
+		// I should probably use form validation, but I'm not
+		e.preventDefault();
+		// Push the user's input into the array
+		yourData.push(input.value);
+		// Push the user's data into the local storage
+		localStorage.setItem('yourItems', JSON.stringify(yourData));
+		// Call add to list to show the list on the page
+		addToList(input.value);
+		// Reset the input field
+		input.value = "";
+	});
+	// Let's go through the list adding each item to the page
+	for (item in data) {
+		addToList(item);
+	}
+;
+
+// Clear the local storage and refresh the page.
+function clearAll() {
+	localStorage.clear();
+	location.reload();
 }
 </script>
-
 </body>
 </html>
+
