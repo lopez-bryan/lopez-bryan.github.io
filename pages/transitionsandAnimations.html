@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Transitions, Animations, Transformations</title>
+	<style>
+		.box {
+		  margin: 30px;
+		  height: 50px;
+		  width: 100px;
+		  background-color: red;
+		}
+
+		#animation-div {
+			margin: 45px auto;
+			width: 250px;
+			height: 100px;
+			background: black;
+			color: white;
+			position: relative;
+			font-size: 18px;
+			display: inline-block;
+		}
+
+		.box.horizTranslate {
+		  -webkit-transition: 3s;
+		  -moz-transition: 3s;
+		  -ms-transition: 3s;
+		  -o-transition: 3s;
+		  transition: 3s;
+		  margin-left: 50% !important;
+		}
+
+		.spiralContainer {
+		  border-radius: 50%;
+		  width:200px;
+		  height:200px;
+		  overflow:hidden;
+		  margin:20px;
+		  -webkit-animation: spin 3s linear 0s infinite reverse;
+		  animation: spin 3s linear 0s infinite reverse;
+		  -webkit-animation-play-state: paused;  
+		  animation-play-state: paused;
+		}
+
+		.center {
+			text-align: center;
+		}
+
+		@-webkit-keyframes mymove {
+		  from {top: 0px;}
+		  to {top: 200px;}
+		}
+
+		@keyframes mymove {
+		  from {top: 0px;}
+		  to {top: 200px;}
+		}
+
+		.spiral {
+			width:200px;
+			height:200px;
+			border-radius: 50%;
+			background-image: url(http://farm7.staticflickr.com/6115/6319704650_0a2bd0dcef_o.jpg);
+			background-repeat:no-repeat;
+			background-position:50% 50%;
+			-webkit-animation: spin 6s linear 0s infinite normal;
+			animation: spin 6s linear 0s infinite normal;
+		}
+
+		.spiralContainer:hover {
+		    -webkit-animation-play-state: running;
+		    animation-play-state: running;
+		}
+
+		@keyframes spin {
+		    0% { transform: rotate(360deg); }
+		    100% { transform: rotate(0deg); }
+		}
+
+		@-webkit-keyframes spin {
+		  0% {-webkit-transform: rotate(360deg); }
+		  100% { -webkit-transform: rotate(0deg); }
+		}
+	</style>
+</head>
+<body>
+	<h1>Transitions and Animations using JavaScript</h1>
+
+	<div class='box'></div> 
+	<button class='toggleButton' value='play'>Play</button><br><br>
+	<div class="center">
+		<div id="animation-div" onclick="moveAnimation()">Click to start an addEventListener with animation.</div>
+	</div>
+
+	<h3>With Javascript</h3>
+	<div class='heart animated'></div> 
+
+	<div class='spiralContainer'><div class='spiral'></div><br><br>
+
+
+
+	<script>
+		var boxOne = document.getElementsByClassName('box')[0];
+
+		document.getElementsByClassName('toggleButton')[0].onclick = function() {
+		  if(this.innerHTML === 'Play') 
+		  { 
+		    this.innerHTML = 'Pause';
+		    boxOne.classList.add('horizTranslate');
+		  } else {
+		    this.innerHTML = 'Play';
+		    var computedStyle = window.getComputedStyle(boxOne),
+		        marginLeft = computedStyle.getPropertyValue('margin-left');
+		    boxOne.style.marginLeft = marginLeft;
+		    boxOne.classList.remove('horizTranslate');    
+		  }  
+		}
+
+		// Animation function that moves a rectangle in the screen
+		var animate = document.getElementById("animation-div");
+		function moveAnimation() {
+			animate.style.WebkitAnimation = "mymove 4s 2"; // Code for Chrome and Safari
+  			animate.style.animation = "mymove 4s 2";     // Standard syntax
+		}
+
+		// We need an event listener to start the animation and stop it.
+		animate.addEventListener("webkitAnimationStart", myStartFunction);
+		animate.addEventListener("webkitAnimationEnd", myEndFunction);
+
+		// Starting animation text and background color.
+		function myStartFunction() {
+		  this.innerHTML = "starting animation";
+		  this.style.backgroundColor = "black";
+		}
+
+		// Ending animation text and background color
+		function myEndFunction() {
+		  this.innerHTML = "All done";
+		  this.style.backgroundColor = "lightgray";
+		}
+
+
+	</script>
+
+</body>
+</html>

@@ -1,9 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CSS3 Transitions</title>
+	<title>CSS3Transitions</title>
+<style> 
+body {
+	background-color: gray;
+}
+/*Shape and transition for first box*/
+div.one {
+  width: 100px;
+  height: 100px;
+  background: red;
+  transition: width 3s, height 5s;
+  transition-timing-function: ease-in-out; 
+  -webkit-transition: width 3s, height 5s;
+  -webkit-transition-timing-function: ease-in-out;  
+}
+/*Shape and transition for second box*/
+div.two {
+  width: 100px;
+  height: 100px;
+  background: blue;
+  transition: width 3s, height 5s;
+  transition-timing-function: steps(4, end);
+  -webkit-transition: width 3s, height 5s;
+  -webkit-transition-timing-function: steps(4, end);
+}
+/*Shape and transition for third box*/
+div.three {
+  width: 100px;
+  height: 100px;
+  background: black;
+  transition-property: none;
+}
+/*What the boxes will change to when they are hovered over.*/
+div:hover {
+  width: 300px;
+  height: 400px;
+}
+.center {
+	text-align: center;
+}
+
+footer {
+	text-align: center;
+	background-color: black;
+	color: white;
+	position: fixed;
+	bottom: 0px;
+	width: 90%;
+	height: 20px;
+}
+
+</style>
 </head>
 <body>
 
+	<h1 class="center">CSS3 Transitions</h1>
+
+	<p class="center">Please hover over each square.</p>
+	<div>
+		<!-- Each div below will hold the box from the style up above. -->
+		<p>Ease in to out.</p>
+		<div class="one"></div><br>
+		<p>Step by 4 to end.</p>
+		<div class="two"></div><br>
+		<p>No transition.</p>
+		<div class="three"></div><br>
+	</div>
+	<footer>Please Check out <a href="https://github.com/lopez-bryan/lopez-bryan.github.io/blob/master/pages/css3Transitions.html">my code on GitHub!</a></footer>
 </body>
 </html>

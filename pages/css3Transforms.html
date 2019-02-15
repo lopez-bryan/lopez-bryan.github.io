@@ -2,8 +2,103 @@
 <html>
 <head>
 	<title>CSS3 Transforms</title>
+	<style>
+		body {
+			background-color: gray;
+		}
+
+		footer {
+			background-color: black;
+			color: white;
+			position: fixed;
+			bottom: 0px;
+			width: 90%;
+			height: 20px;
+			text-align: center;
+		}
+
+		/*This will rotate and spin in circles. Anything over 180 degrees is just another circle*/
+		div.rotate {
+		  width: 200px;
+		  height: 100px;
+		  background-color: yellow;
+		  -webkit-transform: rotate(20deg); 
+		  transform: rotate(20deg);
+		  transition: all 3s;
+  		  transition-timing: ease-in-out;
+  		  display: inline-block;
+		}
+
+		div.skewy {
+		  width: 200px;
+		  height: 100px;
+		  transition: all 3s;
+		  background-color: blue;
+		  -webkit-transform: skewY(40deg); 
+		  transform: skewY(20deg);
+		  transition: all 3s;
+  		  transition-timing: ease-in-out;
+  		  display: inline-block;
+		}
+
+		div.skewx {
+		  width: 200px;
+		  height: 100px;
+		  background-color: red;
+		  border-radius: 20% 50%;
+		  transition: all 3s;
+  		  transition-timing: ease-in-out;
+  		  display: inline-block;
+		}
+
+		.center {
+			position: relative;
+			text-align: center;
+		}
+
+		div:hover {
+			transform: rotate(1080deg);
+		}
+
+		.square1 {
+		    background: black;
+		    border-radius: 3px;
+		    height: 150px;
+		    margin: 100px;
+		    position: absolute;
+		    transition: transform 1s;
+		    width: 150px;
+		    display: inline-block;
+		}
+
+		.square2 {
+		  background: red;
+		  border-radius: 3px;
+		  height: 150px;
+		  margin: 100px;
+		  transition: transform 1s;
+		  position: absolute;
+		  width: 150px;
+		  display: inline-block;
+		  }
+
+	    div.square2:hover {
+	      transform: translate(20px, 20px);
+		}
+  
+
+	</style>
 </head>
 <body>
-
+	<h1 class="center">CSS3 Transforms</h1><br><br>
+	<div class="center">
+		<div class="rotate">Transform Rotate</div><br><br><br><br>
+		<div class="skewy">Transform skewY</div><br><br><br><br>
+		<div class="skewx">Tranform skewX</div><br><br><br><br>
+		<div class="square1"></div>
+		<div class="square2">I will move!</div>
+	</div>
+	
+	<footer>Please Check out <a href="https://github.com/lopez-bryan/lopez-bryan.github.io/blob/master/pages/css3Transforms.html">my code on GitHub!</a></footer>
 </body>
 </html>
