@@ -3,11 +3,15 @@
 <head>
 	<title>Transitions, Animations, Transformations</title>
 	<style>
+		body {
+			background-color: #E0E0E0;
+		}
+
 		.box {
-		  margin: 30px;
-		  height: 50px;
-		  width: 100px;
-		  background-color: red;
+		    margin: 30px;
+		    height: 50px;
+		    width: 100px;
+		    background-color: red;
 		}
 
 		#animation-div {
@@ -22,24 +26,21 @@
 		}
 
 		.box.horizTranslate {
-		  -webkit-transition: 3s;
-		  -moz-transition: 3s;
-		  -ms-transition: 3s;
-		  -o-transition: 3s;
-		  transition: 3s;
-		  margin-left: 50% !important;
+		    -webkit-transition: 3s;
+		    transition: 3s;
+		    margin-left: 50% !important;
 		}
 
 		.spiralContainer {
-		  border-radius: 50%;
-		  width:200px;
-		  height:200px;
-		  overflow:hidden;
-		  margin:20px;
-		  -webkit-animation: spin 3s linear 0s infinite reverse;
-		  animation: spin 3s linear 0s infinite reverse;
-		  -webkit-animation-play-state: paused;  
-		  animation-play-state: paused;
+		    border-radius: 50%;
+		    width:200px;
+		    height:200px;
+		    overflow:hidden;
+		    margin:20px;
+		    -webkit-animation: spin 3s linear 0s infinite reverse;
+		    animation: spin 3s linear 0s infinite reverse;
+		    -webkit-animation-play-state: paused;  
+		    animation-play-state: paused;
 		}
 
 		.center {
@@ -47,13 +48,13 @@
 		}
 
 		@-webkit-keyframes mymove {
-		  from {top: 0px;}
-		  to {top: 200px;}
+		    from {top: 0px;}
+		    to {top: 200px;}
 		}
 
 		@keyframes mymove {
-		  from {top: 0px;}
-		  to {top: 200px;}
+		    from {top: 0px;}
+		    to {top: 200px;}
 		}
 
 		.spiral {
@@ -78,8 +79,18 @@
 		}
 
 		@-webkit-keyframes spin {
-		  0% {-webkit-transform: rotate(360deg); }
-		  100% { -webkit-transform: rotate(0deg); }
+		    0% {-webkit-transform: rotate(360deg); }
+		    100% { -webkit-transform: rotate(0deg); }
+		}
+
+		footer {
+			background-color: black;
+			color: white;
+			position: fixed;
+			bottom: 0px;
+			width: 90%;
+			height: 20px;
+			text-align: center;
 		}
 	</style>
 </head>
@@ -97,16 +108,21 @@
 
 	<div class='spiralContainer'><div class='spiral'></div><br><br>
 
+	<footer>Find my <a href="https://github.com/lopez-bryan/lopez-bryan.github.io/blob/master/pages/transitionsandAnimations.html">code here.</a></footer>
+
 
 
 	<script>
+		// Grab the box we want to move.
 		var boxOne = document.getElementsByClassName('box')[0];
 
+		// Grab the togglebutton associated by its class and when it is clicked on, it will add the horizTranslate class which contains a transition of 3 seconds accross half the screen
 		document.getElementsByClassName('toggleButton')[0].onclick = function() {
 		  if(this.innerHTML === 'Play') 
 		  { 
 		    this.innerHTML = 'Pause';
 		    boxOne.classList.add('horizTranslate');
+		    // If the button is clicked again and paused, the margin is set to where the box stopped and the class containing the transition is removed.
 		  } else {
 		    this.innerHTML = 'Play';
 		    var computedStyle = window.getComputedStyle(boxOne),
