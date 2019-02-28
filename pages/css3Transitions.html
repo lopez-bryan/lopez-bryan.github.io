@@ -13,7 +13,7 @@ div.one {
   background: red;
   transition: width 3s, height 5s;
   transition-timing-function: ease-in-out; 
-  -webkit-transition: width 3s, height 5s;
+  -webkit-transition: width 2s, height 4s;
   -webkit-transition-timing-function: ease-in-out;  
 }
 /*Shape and transition for second box*/
@@ -23,7 +23,7 @@ div.two {
   background: blue;
   transition: width 3s, height 5s;
   transition-timing-function: steps(4, end);
-  -webkit-transition: width 3s, height 5s;
+  -webkit-transition: width 2s, height 4s;
   -webkit-transition-timing-function: steps(4, end);
 }
 /*Shape and transition for third box*/
@@ -52,6 +52,61 @@ footer {
 	height: 20px;
 }
 
+.box {
+	width: 300px;
+	height: 200px;
+	background: red;
+	/*It's good practice to transition in milliseconds because JavaScript only takes milliseconds and not seconds.*/
+	transition-duration: 1000ms;
+	transition-property: background
+}
+
+.box:hover {
+	background: blue;
+}
+
+div.four {
+	width: 300px;
+	height: 200px;
+	background: black;
+	transition-duration: 1500ms;
+	/*Better to not use all for transition property since transitions are CPU intensive*/
+	transition-property: background, transform;
+}
+
+.four:hover {
+	background: yellow;
+	transform: rotate(45deg);
+}
+
+div.five {
+	width: 300px;
+	height: 200px;
+	transition-duration: 1500ms;
+	background: pink;
+	transition-property: background, transform;
+	-webkit-transition-timing-function: ease-in;
+	transition-timing-function: ease-in;
+}
+
+.five:hover {
+	background: green;
+	transform: rotate(360deg);
+}
+
+div.six {
+	width: 300px;
+	height: 200px;
+	background: brown;
+	transition: 1s background ease-in, 500ms transform ease-out 1s;
+	
+}
+
+.six:hover {
+	background: blue;
+	transform: rotate(90deg);
+}
+
 </style>
 </head>
 <body>
@@ -67,6 +122,14 @@ footer {
 		<div class="two"></div><br>
 		<p>No transition.</p>
 		<div class="three"></div><br>
+		<p>Transition to change color.</p>
+		<div class="box"></div><br>
+		<p>Transition and rotate at the same time.</p>
+		<div class="four"></div>
+		<p>Ease in.</p>
+		<div class="five"></div>
+		<p>change background and transform ease-out one after another.</p>
+		<div class="six"></div>
 	</div>
 	<footer>Please Check out <a href="https://github.com/lopez-bryan/lopez-bryan.github.io/blob/master/pages/css3Transitions.html">my code on GitHub!</a></footer>
 </body>

@@ -1,0 +1,60 @@
+.container-1 {
+			text-align: center;
+			position: relative;
+		}
+.container-2 {
+			display: inline-block;
+			position: relative;
+		}
+body {
+	background-color: #E0E0E0;
+	top: 90px;
+}
+
+img {
+	position: relative;
+	margin-top: 60px;
+	margin-bottom: 70px;
+	width: 50%;
+}
+
+video {
+	position: relative;
+	margin-top: 60px;
+}
+
+#all {
+			position: relative;
+			text-align: center;
+			background-color: black;
+			border-style: solid;
+			width: 100%;
+			height: 100%;
+		}
+
+		.body-button {
+			display: inline-block;
+			margin-top: 60px;
+			margin-left: 60px;
+			height: 360px;
+			width: 260px;
+			font-size: 20px;
+			background-color: gray;
+			border-radius: 12px;
+			-webkit-transition-duration: 0.8s;
+  			transition-duration: 0.8s;
+  			box-shadow: 0 9px #999;
+		}
+
+		button:hover {
+			cursor: pointer;
+			background-color: blue;
+		}
+
+		.button:active {
+		    box-shadow: 0 5px #999;
+		    transform: translateY(4px);
+		}
+		.white {
+			color: white;
+		}

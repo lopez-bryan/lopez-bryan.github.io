@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Picture of the Day</title>
+	<link rel="stylesheet" type="text/css" href="../css/planets.css">
+</head>
+<body>
+
+	<div class="dropdown">
+  		<button class="dropbtn">Dropdown</button>
+  			<div class="dropdown-content">
+    			<a href="../final_app.html">Home</a>
+    			<a href="mercury.html">Mercury</a>
+			    <a href="venus.html">Venus</a>
+			    <a href="earth.html">Earth</a>
+				<a href="mars.html">Mars</a>
+				<a href="jupiter.html">Jupiter</a>
+				<a href="saturn.html">Saturn</a>
+				<a href="uranus.html">Uranus</a>
+				<a href="neptune.html">Neptune</a>
+			</div>
+	</div>
+
+	<div class="container-1">
+		<h1>Picture of the Day</h1>
+		<div class="container-2">
+			<p id="date"></p>
+			<p id="copyright"></p>
+			<div id="explanation"></div>
+			<img id="image">
+		</div>
+
+	</div>
+
+	
+	<script>
+		
+			// We use Ajax to communicate with the web server via an XMLHttpRequest(); The XMLHttpRequest object can be used to exchange data with a server behind the scenes
+		var request = new XMLHttpRequest();
+
+		// open(method, url, async) Sending request to server
+		request.open('GET', "https://api.nasa.gov/planetary/apod?api_key=cjBTxLNw84nYoK0xG2rfwFSjwjPZEUFBdPdKeHQp", true);
+
+		// The following function will reveal the data when getData() is called.
+		request.onload = function() {
+			// First we check to make sure everything is okay.
+			if (request.status >= 200 && request.status < 400){
+			// Success! The responseText method returns the server response as a text string. Since it responds as a text string, we need to parse it. Everything that comes from an API is stored in a string.
+			var data = JSON.parse(request.responseText);
+			document.getElementById("copyright").innerHTML = "Copyright: " + data.copyright;
+			document.getElementById("date").innerHTML = "Today is: " + data.date;
+			document.getElementById("explanation").innerHTML = data.explanation;
+			document.getElementById("image").src = data.url;
+
+			
+			console.log(data);
+			
+  } else {
+    // We reached our target server, but it returned an error
+    console.log("There was an error");
+
+  }
+};
+
+request.onerror = function() {
+  console.log("connection error")
+};
+
+request.send();
+
+	</script>
+			
+		
+</body>
+</html>
