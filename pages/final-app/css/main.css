@@ -7,7 +7,7 @@
 			position: relative;
 		}
 body {
-	background-color: #E0E0E0;
+	background-color: #95A490;
 	top: 90px;
 }
 
@@ -26,7 +26,7 @@ video {
 #all {
 			position: relative;
 			text-align: center;
-			background-color: black;
+			background-color: #95A490;
 			border-style: solid;
 			width: 100%;
 			height: 100%;
