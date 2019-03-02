@@ -1,6 +1,6 @@
 if ('serviceWorker' in navigator) {
 	navigator.serviceWorker
-		.register('./service-worker.js').then(function(registration) {
+		.register('https://lopez-bryan.github.io/pages/final-app/service-worker.js').then(function(registration) {
 			console.log("Service Worker Registered");
 		})
 		.catch(function(err) {

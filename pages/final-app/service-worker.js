@@ -18,7 +18,7 @@ var cacheFiles = [
 	'videos/First-Spacecraft-Neptune~small.mp4',
 	'videos/First-Spacecraft-Uranus~small.mp4',
 	'videos/JPL-20180220-MARSf-0001-Whats Inside Mars~small.mp4',
-	'videos/Saturn_Rings~small.mp4'
+	'videos/Saturn_Rings~small.mp4'];
 
 
 self.addEventListener('install', function(e) {
