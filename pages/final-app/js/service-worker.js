@@ -43,3 +43,37 @@ self.addEventListener('activate', function(e) {
 			}))
 		}))
 })
+
+
+self.addEventListener('fetch', function(e) {
+	console.log("[ServiceWorker] Fetching", e.request.url);
+
+	e.respondWith(
+		caches.match(e.request).then(function(response) {
+			if (response)  {
+				console.log("[ServiceWorker] Found in cache", e.request.url);
+				return response;
+			}
+			var requestClone = e.request.clone();
+
+			fetch(requestClone)
+				.then(function(response) {
+					if (!response) {
+						return response;
+					}
+
+					var responseClone = response.clone();
+					caches.open(cacheName).then(function(cache) {
+						cache.put(e.request, responseClone);
+						return response;
+					});
+				})
+				.catch(function(err) {
+					console.log("Error");
+				})
+
+		}))
+})
+
+
+
