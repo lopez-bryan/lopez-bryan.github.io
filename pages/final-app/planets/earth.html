@@ -19,6 +19,7 @@
 				<a href="uranus.html">Uranus</a>
 				<a href="neptune.html">Neptune</a>
 				<a href="picture-of-day.html">Picture of Day</a>
+				<a href="solar-system.html">Solar System Model</a>
 			</div>
 	</div>
 
@@ -27,7 +28,17 @@
 		<div class="container-2"></div>
 
 			<img src="../images/earth.jpg" width="50%">
-			<p>View of Earth.</p>
+			<p>View of Earth.</p><br><br>
+
+			<button class="myButton" onclick="showFacts()">Show Facts</button><br>
+
+			<div class="container-3" style="display: none;">
+				<ul>
+					<li>Earth has one moon.</li>
+					<li>One year is 365.24 days.</li>
+					<li>Temperature on earth ranges between -126.4 to 136.4°F</li>
+				</ul>
+			</div>
 
 			<video width="50%" controls>
 				<source src="../videos/Earth-Observations~small.mp4" type="video/mp4">
@@ -36,6 +47,8 @@
 		</div>
 
 	</div>
+
+	<script src="../app.js"></script>
 
 </body>
 </html>

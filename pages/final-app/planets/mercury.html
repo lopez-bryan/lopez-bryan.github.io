@@ -19,6 +19,7 @@
 				<a href="uranus.html">Uranus</a>
 				<a href="neptune.html">Neptune</a>
 				<a href="picture-of-day.html">Picture of Day</a>
+				<a href="solar-system.html">Solar System Model</a>
 			</div>
 	</div>
 
@@ -27,7 +28,18 @@
 		<div class="container-2"></div>
 
 			<img src="../images/mercury.jpg" width="50%">
-			<p>Transit of Mercury.</p>
+			<p>Transit of Mercury.</p><br><br>
+			<button class="myButton" onclick="showFacts()">Show Facts</button><br>
+
+			<div class="container-3" style="display: none;">
+				<ul>
+					<li>A year for Mercury is just 88 days.</li>
+					<li>Mercury does not have any moons or rings.</li>
+					<li>Your weight on Mercury would be 38% of your weight on Earth.</li>
+					<li>A day on the surface of Mercury lasts 176 Earth days.</li>
+					<li>The tempertature ranges from -279.4 to 800.6°F</li>
+				</ul>
+			</div>
 
 			<video width="50%" controls>
 				<source src="../videos/215_TransitOfMercury~small.mp4" type="video/mp4">
@@ -36,6 +48,8 @@
 		</div>
 
 	</div>
+
+	<script src="../app.js"></script>
 
 </body>
 </html>

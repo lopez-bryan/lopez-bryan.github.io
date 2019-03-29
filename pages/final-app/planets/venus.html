@@ -19,6 +19,7 @@
 				<a href="uranus.html">Uranus</a>
 				<a href="neptune.html">Neptune</a>
 				<a href="picture-of-day.html">Picture of Day</a>
+				<a href="solar-system.html">Solar System Model</a>
 			</div>
 	</div>
 
@@ -27,7 +28,18 @@
 		<div class="container-2"></div>
 
 			<img src="../images/venus.jpg" width="50%">
-			<p>The 2012 Transit of Venus.</p>
+			<p>The 2012 Transit of Venus.</p><br><br>
+
+			<button class="myButton" onclick="showFacts()">Show Facts</button><br>
+
+			<div class="container-3" style="display: none;">
+				<ul>
+					<li>A year on Venus takes 225 Earth days.</li>
+					<li>Venus does not have any moons or rings.</li>
+					<li>The surface temperature on Venus can reach 879.8 °F.</li>
+					<li>A day on the surface of Venus (solar day) would appear to take 117 Earth days.</li>
+				</ul>
+			</div>
 
 			<video width="50%" controls>
 				<source src="../videos/61_2012VenusTransit~small.mp4" type="video/mp4">
@@ -36,6 +48,8 @@
 		</div>
 
 	</div>
+
+	<script src="../app.js"></script>
 
 </body>
 </html>

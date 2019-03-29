@@ -19,6 +19,7 @@
 				<a href="saturn.html">Saturn</a>
 				<a href="uranus.html">Uranus</a>
 				<a href="picture-of-day.html">Picture of Day</a>
+				<a href="solar-system.html">Solar System Model</a>
 			</div>
 	</div>
 
@@ -27,7 +28,17 @@
 		<div class="container-2"></div>
 
 			<img src="../images/neptune.jpg" width="50%">
-			<p>First time by Neptune.</p>
+			<p>First time by Neptune.</p><br><br>
+
+			<button class="myButton" onclick="showFacts()">Show Facts</button><br>
+
+			<div class="container-3" style="display: none;">
+				<ul>
+					<li>Neptune has 5 rings and 14 moons.</li>
+					<li>Temperature is -353.2°F.</li>
+					<li>One time around the sun is 60,190 days (164.8 years).</li>
+				</ul>
+			</div>
 
 			<video width="50%" controls>
 				<source src="../videos/First-Spacecraft-Neptune~small.mp4" type="video/mp4">
@@ -36,6 +47,8 @@
 		</div>
 
 	</div>
+
+	<script src="../app.js"></script>
 
 </body>
 </html>
